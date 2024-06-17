@@ -20,7 +20,7 @@ const createCar = async (car: Car): Promise<Car> => {
     }
 }
 
-const findCarWithLicensePlate = async(licensePlate: string): Promise<Car> => {
+const findCarWithLicensePlate = async (licensePlate: string): Promise<Car> => {
     try {
         const carPrisma = await database.car.findUnique({
             where: {
@@ -28,13 +28,25 @@ const findCarWithLicensePlate = async(licensePlate: string): Promise<Car> => {
             }
         })
         if (carPrisma) return Car.from(carPrisma)
-    } catch(error) {
-        console.log(error);
+    } catch (error) {
+        console.error(error);
         throw new DatabaseError()
     }
+}
+
+const findAllCars = async(): Promise<Array<Car>> => {
+    try {
+        const carsPrisma = await database.car.findMany()
+        return carsPrisma.map((carPrisma) => Car.from(carPrisma))
+    } catch( error ) {
+        console.error(error)
+        throw new DatabaseError()
+    }
+
 }
 
 export default {
     createCar,
     findCarWithLicensePlate,
+    findAllCars,
 }
