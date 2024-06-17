@@ -1,0 +1,43 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "back-end for my GarageGuru project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -L app.ts --delay 3"
+  },
+  "nodemonConfig": {
+    "ext": "ts",
+    "delay": "3",
+    "execMap": {
+      "ts": "ts-node"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woutjedunk/GarageGuru.git"
+  },
+  "author": "woutjedunk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woutjedunk/GarageGuru/issues"
+  },
+  "homepage": "https://github.com/woutjedunk/GarageGuru#readme",
+  "dependencies": {
+    "@prisma/client": "^5.3.1",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "date-fns": "^2.30.0",
+    "dotenv": "^16.4.1",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "nodemon": "^2.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "prisma": {
+    "schema": "domain/data-acces/prisma/schema.prisma"
+  }
+}
