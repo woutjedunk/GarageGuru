@@ -24,8 +24,6 @@ const initServer = async () => {
     //     throw new Error('JWT_SECRET must be defined')
     // }
     const port = process.env.APP_PORT || 3000;
-
-
     app.use(cors());
     app.use(bodyParser.json());
 
@@ -108,7 +106,7 @@ const initServer = async () => {
         }
     });
 
-    app.listen(port || 3000, () => {
+    app.listen(port, () => {
         console.log(`Back-end is running on port ${port}.`);
     });
 }
