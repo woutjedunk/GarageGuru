@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Car {
-    id                  String      @id @default(cuid())
+    id                  String      @id @default(uuid())
     make                String            
     model               String
-    variant             String
+    variant             String?
     manufactureYear     Int
     licensePlate        String      @unique
 }
