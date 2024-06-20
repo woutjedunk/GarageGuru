@@ -1,7 +1,6 @@
-import database from "../../util/database";
-import { Car } from "../model/Car"
-import DatabaseError from "../../util/error/DatabaseError";
-import NotFoundError from "../../util/error/NotFoundError"
+import database from "util/database";
+import { Car } from "domain/model/Car"
+import DatabaseError from "util/error/DatabaseError";
 import { UUID } from "crypto";
 
 const createCar = async (car: Car): Promise<Car> => {

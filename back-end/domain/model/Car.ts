@@ -1,5 +1,5 @@
 import { Car as CarPrisma } from "@prisma/client"
-import { CarDTO } from "../../types";
+import { CarDTO } from "types";
 import { UUID } from "crypto";
 
 
