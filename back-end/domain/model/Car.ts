@@ -1,27 +1,29 @@
 import { Car as CarPrisma } from "@prisma/client"
+import { CarDTO } from "../../types";
+import { UUID } from "crypto";
 
 
 
 export class Car {
-    readonly id?: string;
+    readonly id?: UUID;   
     readonly make: string;
     readonly model: string;
     readonly variant?: string;
     readonly manufactureYear: number;
     readonly licensePlate: string;
 
-    constructor(car) {
+    constructor(car: CarDTO & { id?: string }) {
         this.validate(car);
 
-        this.id = car.id;
+        if (car.id) this.id = car.id
         this.make = car.make;
         this.model = car.model;
-        this.variant = car.variant;
+        if (car.variant) this.variant = car.variant;
         this.manufactureYear = car.manufactureYear;
         this.licensePlate = car.licensePlate;
     }
 
-    validate(car) {
+    validate(car: CarDTO) {
         if (!car.make || typeof (car.make) != 'string')
             throw new Error("Car make can't be empty and must be a string");
 
@@ -52,10 +54,10 @@ export class Car {
 
     static from(carPrisma: CarPrisma) {
         return new Car({
-            id: carPrisma.id,
+            id: carPrisma.id as UUID,
             make: carPrisma.make,
             model: carPrisma.model,
-            variant: carPrisma.variant,
+            variant: carPrisma.variant ?? undefined,
             manufactureYear: carPrisma.manufactureYear,
             licensePlate: carPrisma.licensePlate
         })

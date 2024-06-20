@@ -1,6 +1,8 @@
 import database from "../../util/database";
 import { Car } from "../model/Car"
 import DatabaseError from "../../util/error/DatabaseError";
+import NotFoundError from "../../util/error/NotFoundError"
+import { UUID } from "crypto";
 
 const createCar = async (car: Car): Promise<Car> => {
     try {
@@ -13,7 +15,7 @@ const createCar = async (car: Car): Promise<Car> => {
                 licensePlate: car.licensePlate
             }
         })
-        if (carPrisma) return Car.from(carPrisma)
+        return Car.from(carPrisma)
     } catch (error) {
         console.error(error);
         throw new DatabaseError();
@@ -27,26 +29,56 @@ const findCarWithLicensePlate = async (licensePlate: string): Promise<Car> => {
                 licensePlate: licensePlate
             }
         })
-        if (carPrisma) return Car.from(carPrisma)
+        if (carPrisma) return Car.from(carPrisma);
     } catch (error) {
         console.error(error);
         throw new DatabaseError()
     }
 }
 
-const findAllCars = async(): Promise<Array<Car>> => {
+const findAllCars = async (): Promise<Array<Car>> => {
     try {
         const carsPrisma = await database.car.findMany()
         return carsPrisma.map((carPrisma) => Car.from(carPrisma))
-    } catch( error ) {
+    } catch (error) {
         console.error(error)
         throw new DatabaseError()
     }
 
 }
 
+const findCarWithId = async (id: UUID): Promise<Car> => {
+    try {
+        const carPrisma = await database.car.findUnique({
+            where: {
+                id: id as string
+            }
+        })
+        if (carPrisma) return Car.from(carPrisma);
+    } catch (error) {
+        console.error(error)
+        throw new DatabaseError()
+    }
+}
+
+const deleteCar = async (id: UUID): Promise<Car> => {
+    try {
+        const carPrisma = await database.car.delete({
+            where: {
+                id: id as string
+            }
+        })
+        if (carPrisma) return Car.from(carPrisma);
+    } catch (error) {
+        console.error(error)
+        throw new DatabaseError()
+    }
+}
+
 export default {
     createCar,
     findCarWithLicensePlate,
     findAllCars,
+    findCarWithId,
+    deleteCar
 }
