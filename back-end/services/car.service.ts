@@ -1,8 +1,8 @@
-import { Car } from "../domain/model/Car";
-import { CarDTO } from "../types";
-import CarDb from "../domain/data-acces/car.db"
+import { Car } from "domain/model/Car";
+import { CarDTO } from "types";
+import CarDb from "domain/data-acces/car.db"
 import { UUID } from "crypto";
-import NotFoundError from "../util/error/NotFoundError";
+import NotFoundError from "util/error/NotFoundError";
 
 const createCar = async (carInput: CarDTO): Promise<Car> => {
     try {
