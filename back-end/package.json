@@ -2,10 +2,10 @@
   "name": "back-end",
   "version": "1.0.0",
   "description": "back-end for my GarageGuru project",
-  "main": "index.js",
+  "main": "src/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -L app.ts --delay 3",
+    "start": "nodemon -L src/app.ts --delay 3",
     "build": "tsc"
   },
   "nodemonConfig": {
@@ -32,6 +32,7 @@
     "date-fns": "^2.30.0",
     "dotenv": "^16.4.1",
     "express": "^4.19.2",
+    "prisma": "^5.15.1",
     "tsconfig-paths": "^4.2.0",
     "tspec": "^0.1.114",
     "typescript": "^5.5.2"
@@ -47,6 +48,6 @@
     "ts-node": "^10.9.2"
   },
   "prisma": {
-    "schema": "domain/data-acces/prisma/schema.prisma"
+    "schema": "src/domain/data-acces/prisma/schema.prisma"
   }
 }

@@ -24,7 +24,7 @@ const initServer = async () => {
     // if (!process.env.JWT_SECRET) {
     //     throw new Error('JWT_SECRET must be defined')
     // }
-    const port = process.env.APP_PORT || 3000;
+    const port = process.env.APP_PORT || 8080;
     app.use(cors());
     app.use(bodyParser.json());
 
