@@ -6,6 +6,15 @@
         "forceConsistentCasingInFileNames": true,
         // "strict": true,
         "esModuleInterop": true,
+        "rootDirs": ["./"],
+        "outDir": "./dist",
         "baseUrl": ".",
+        "paths": {
+            "#model/*": ["domain/model/*"],
+            "#data-acces/*": ["domain/data-acces/*"],
+            "#service/*": ["service/*"],
+            "#controller/*": ["controller/*"],
+            "#util/*": ["util/*"],
+        }
     }
 }

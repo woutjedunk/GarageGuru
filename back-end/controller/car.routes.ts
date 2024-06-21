@@ -1,7 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express'
 
-import carService from "../services/car.service"
-import { Car } from '../domain/model/Car';
+import carService from "#service/car.service"
 import { Tspec } from 'tspec';
 import { CarDTO } from '../types';
 import { UUID } from 'crypto';

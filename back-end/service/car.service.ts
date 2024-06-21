@@ -1,6 +1,6 @@
-import { Car } from "domain/model/Car";
+import { Car } from "#model/Car";
 import { CarDTO } from "types";
-import CarDb from "domain/data-acces/car.db"
+import CarDb from "#data-acces/car.db"
 import { UUID } from "crypto";
 import NotFoundError from "util/error/NotFoundError";
 
